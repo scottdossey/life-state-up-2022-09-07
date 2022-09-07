@@ -17,8 +17,10 @@ function ViewCount(props) {
 function App(props) {
   let [count, setCount] = React.useState(0);
 
-  function handleIncrementButton() {
-    setCount(count+1);
+  function handleIncrementButton() {    
+    //This is the correct way to update state that depends on itself.
+    setCount((currentCount) => {return currentCount+1;} );
+    setCount((currentCount) => {return currentCount+1;} );    
   }
 
   return (

@@ -25,7 +25,20 @@ class AppWithClass extends React.Component {
     }
 
     handleIncrementButton() {
-        this.setState({count: this.state.count+1});
+        //setState----doesn't update the state immediately...
+        //Every call to setState that happens over a period 
+        //of time can change different state properties.
+        console.log("HandleIncrementButton")
+        //It is actually considered incorrect in REACT
+        //to use a setState to set a value based upon
+        //the previous version of value in this way.
+        this.setState( (state, props) => {
+             return { count: state.count+1 }
+        });
+        this.setState( (state, props) => {
+            return { count: state.count+1 }
+        });           
+        
     }
 
     render() {
